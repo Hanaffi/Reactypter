@@ -11,16 +11,14 @@ export const fetchPlugin = (inputCode: string) => {
         name: 'fetch-plugin',
         setup(build: esbuild.PluginBuild) {
             // On load for entry file
-
             build.onLoad({ filter: /(^index\.js$)/ }, (args: any) => {
                 return {
                     loader: 'jsx',
                     contents: inputCode
                 };
             });
-            // On load for CSS files
-
-            build.onLoad({ filter: /.css$/ }, async (args: any) => {
+            // If no valid return, It will continue to next onload
+            build.onLoad({ filter: /.*/ }, async (args: any) => {
                 const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(
                     args.path
                 );
@@ -28,6 +26,11 @@ export const fetchPlugin = (inputCode: string) => {
                 if (cachedResult) {
                     return cachedResult;
                 }
+                return null;
+            });
+
+            // On load for CSS files
+            build.onLoad({ filter: /.css$/ }, async (args: any) => {
                 const { data, request } = await axios.get(args.path);
 
                 const escaped = data
@@ -48,16 +51,9 @@ export const fetchPlugin = (inputCode: string) => {
 
                 return result;
             });
+
             // On load for JSX files
-
             build.onLoad({ filter: /.*/ }, async (args: any) => {
-                const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(
-                    args.path
-                );
-
-                if (cachedResult) {
-                    return cachedResult;
-                }
                 const { data, request } = await axios.get(args.path);
 
                 const result: esbuild.OnLoadResult = {
