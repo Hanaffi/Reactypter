@@ -1,0 +1,17 @@
+.editor-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.editor-wrapper .button {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    z-index: 25;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.editor-wrapper:hover .button {
+    opacity: 1;
+}
