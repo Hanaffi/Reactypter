@@ -13,13 +13,20 @@ const html = `
   <body>
     <div id="root"></div>
     <script>
+      const handleError = (err)=>{
+        const  root = document.querySelector('#root');
+        root.innerHTML = '<div style="color: red;"><h4>Runtime Error</h4>' + err + '</div>';
+        console.error(err);
+      };
+      window.addEventListener('error' , (event)=>{
+        event.preventDefault();
+        handleError(event.error);
+      })
       window.addEventListener('message', (event) => {
         try {
           eval(event.data);
         } catch (err) {
-          const  root = document.querySelector('#root');
-          root.innerHTML = '<div style="color: red;"><h4>Runtime Error</h4>' + err + '</div>';
-          console.error(err);
+          handleError(err)
         }
       }, false);
     </script>
@@ -29,6 +36,7 @@ const html = `
 
 interface previewProps {
     code: string;
+    err: string;
 }
 const Preview: React.FC<previewProps> = (props) => {
     const iframe = useRef<any>();
@@ -48,6 +56,8 @@ const Preview: React.FC<previewProps> = (props) => {
                 sandbox="allow-scripts"
                 srcDoc={html}
             />
+
+            {props.err && <div className="preview-error">{props.err}</div>}
         </div>
     );
 };
