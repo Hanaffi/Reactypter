@@ -6,8 +6,6 @@ const App = () => {
     return (
         <div>
             <CodeCell />
-            <div style={{ width: '100%', height: '500px' }}></div>
-            <CodeCell />
         </div>
     );
 };

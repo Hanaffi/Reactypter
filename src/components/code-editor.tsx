@@ -58,7 +58,7 @@ const CodeEditor: React.FC<CodeEditorProps> = (props) => {
                     automaticLayout: true
                 }}
                 theme="dark"
-                height="500px"
+                height="100%"
             />
         </div>
     );
