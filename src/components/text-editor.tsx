@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import './text-editor.css';
 const TextEditor: React.FC = () => {
     const [editing, setEditing] = useState(false);
+    const [text, setText] = useState('# Header');
+
     const ref = useRef<HTMLDivElement | null>(null);
     useEffect(() => {
         const listener = (event: MouseEvent) => {
@@ -25,8 +27,13 @@ const TextEditor: React.FC = () => {
     }, []);
     if (editing) {
         return (
-            <div ref={ref}>
-                <MDEditor />
+            <div className="text-editor" ref={ref}>
+                <MDEditor
+                    value={text}
+                    onChange={(v) => {
+                        setText(v || '');
+                    }}
+                />
             </div>
         );
     }
@@ -35,8 +42,11 @@ const TextEditor: React.FC = () => {
             onClick={() => {
                 setEditing(true);
             }}
+            className="text-editor card"
         >
-            <MDEditor.Markdown source={'# HEADER'} />
+            <div className="card-content">
+                <MDEditor.Markdown source={text} />
+            </div>
         </div>
     );
 };
