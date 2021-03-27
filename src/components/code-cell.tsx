@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import CodeEditor from '../components/code-editor';
 import Preview from '../components/preview';
@@ -8,10 +8,22 @@ import Resizable from './resizable';
 const CodeCell = () => {
     const [input, setInput] = useState('console.log("Hello World");');
     const [code, setCode] = useState('');
-    const onClick = async () => {
-        const output = await bundle(input);
-        setCode(output);
-    };
+    useEffect(() => {
+        let timer: any;
+
+        timer = setTimeout(async () => {
+            const output = await bundle(input);
+            setCode(output);
+        }, 1000);
+
+        return () => {
+            // it  will be called after the component rerender
+            if (timer) {
+                clearTimeout(timer);
+            }
+        };
+    }, [input]);
+
     return (
         <Resizable direction="vertical">
             <div
@@ -29,9 +41,7 @@ const CodeCell = () => {
                         initialValue='console.log("Hello World");'
                     />
                 </Resizable>
-                {/* <div>
-                    <button onClick={onClick}>Submit</button>
-                </div> */}
+
                 <Preview code={code} />
             </div>
         </Resizable>
