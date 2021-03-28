@@ -9,7 +9,7 @@ const CellListItem: React.FC<CellListItemProps> = (props) => {
     let child: JSX.Element;
     if (props.cell!.type === 'code') child = <CodeCell cell={props.cell} />;
     else {
-        child = <TextEditor />;
+        child = <TextEditor cell={props.cell} />;
     }
     return <div>{child}</div>;
 };
