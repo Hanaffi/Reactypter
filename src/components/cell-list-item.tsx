@@ -8,16 +8,24 @@ interface CellListItemProps {
 }
 const CellListItem: React.FC<CellListItemProps> = (props) => {
     let child: JSX.Element;
-    if (props.cell!.type === 'code') child = <CodeCell cell={props.cell} />;
+    if (props.cell!.type === 'code')
+        child = (
+            <>
+                <div className="action-bar-wrapper">
+                    <ActionBar id={props.cell!.id} />
+                </div>
+                <CodeCell cell={props.cell} />
+            </>
+        );
     else {
-        child = <TextEditor cell={props.cell} />;
+        child = (
+            <>
+                <TextEditor cell={props.cell} />
+                <ActionBar id={props.cell!.id} />
+            </>
+        );
     }
-    return (
-        <div className="cell-list-item">
-            {child}
-            <ActionBar id={props.cell!.id} />
-        </div>
-    );
+    return <div className="cell-list-item">{child}</div>;
 };
 
 export default CellListItem;
