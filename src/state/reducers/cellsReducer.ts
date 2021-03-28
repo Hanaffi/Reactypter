@@ -31,13 +31,18 @@ const reducer = produce((state: CellsState = initialState, action: Action) => {
 
         case ActionType.MOVE_CELL:
             const { direction } = action.payload;
-            const index = state.order.findIndex((id) => action.payload.id);
-            const targettIndex = direction === 'up' ? index - 1 : index + 1;
-            if (targettIndex < 0 || targettIndex >= state.order.length) return;
-            state.order[index] = state.order[targettIndex];
-            state.order[targettIndex] = action.payload.id;
-            return state;
+            const index = state.order.findIndex(
+                (id) => id === action.payload.id
+            );
+            const targetIndex = direction === 'up' ? index - 1 : index + 1;
 
+            if (targetIndex < 0 || targetIndex > state.order.length - 1) {
+                return;
+            }
+
+            state.order[index] = state.order[targetIndex];
+            state.order[targetIndex] = action.payload.id;
+            return state;
         case ActionType.INSERT_CELL_BEFORE:
             const cell: Cell = {
                 content: '',
