@@ -1,0 +1,12 @@
+.progress {
+}
+
+.progress-cover {
+    height: 100%;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    background-color: white;
+    padding-left: 10%;
+    padding-right: 10%;
+}
