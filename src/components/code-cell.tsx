@@ -25,7 +25,7 @@ const CodeCell: React.FC<CodeCellProps> = (props) => {
         return cumulative_Code;
     });
 
-    console.log(cumulativeCode);
+    // console.log(cumulativeCode);
 
     const { updateCell, createBundle } = useActions();
     const bundle = useTypedSelector((state) => {
@@ -34,12 +34,12 @@ const CodeCell: React.FC<CodeCellProps> = (props) => {
 
     useEffect(() => {
         if (!bundle) {
-            createBundle(props.cell!.id, props.cell!.content);
+            createBundle(props.cell!.id, cumulativeCode.join('\n'));
             return;
         }
         let timer: any;
         timer = setTimeout(async () => {
-            createBundle(props.cell!.id, props.cell!.content);
+            createBundle(props.cell!.id, cumulativeCode.join('\n'));
         }, 1000);
 
         return () => {
@@ -49,7 +49,7 @@ const CodeCell: React.FC<CodeCellProps> = (props) => {
             }
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.cell!.content, props.cell!.id, createBundle]);
+    }, [cumulativeCode.join('\n'), props.cell!.id, createBundle]);
 
     return (
         <Resizable direction="vertical">
