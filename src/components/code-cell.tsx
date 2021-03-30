@@ -6,53 +6,11 @@ import Resizable from './resizable';
 import { Cell } from '../state';
 import { useActions } from '../hooks/use-actions';
 import { useTypedSelector } from '../hooks/use-typed-selector';
-
+import useCummulativeCode from '../hooks/use-cummulative-code';
 interface CodeCellProps {
     cell: Cell | undefined;
 }
 const CodeCell: React.FC<CodeCellProps> = (props) => {
-    const cumulativeCode = useTypedSelector((state) => {
-        const orderedCells = state!.cells!.order.map(
-            (ID) => state!.cells!.data[ID]
-        );
-        const showFunc = `
-        import _React from 'react';
-        import _ReactDOM from 'react-dom';
-
-        var show = (value)=>{
-            const root =  document.querySelector("#root");
-             
-            if(typeof value === 'object'){
-                if(value.$$typeof && value.props){
-                    _ReactDOM.render(value,root);
-                } 
-                else{
-                    root.innerHTML = JSON.stringify(value);
-                }
-            }
-            
-            else{
-                root.innerHTML = value;
-            }
-            
-        }
-    `;
-        const showFuncNoOp = 'var show =()=>{}';
-        const cumulative_code: string[] = [];
-        for (let c of orderedCells) {
-            if (c.type === 'code') {
-                if (c.id === props!.cell!.id) {
-                    cumulative_code.push(showFunc);
-                } else {
-                    cumulative_code.push(showFuncNoOp);
-                }
-                cumulative_code.push(c.content);
-            }
-            if (c.id === props!.cell!.id) break;
-        }
-        return cumulative_code;
-    });
-
     // console.log(cumulativeCode);
 
     const { updateCell, createBundle } = useActions();
@@ -60,14 +18,16 @@ const CodeCell: React.FC<CodeCellProps> = (props) => {
         return state!.bundles![props.cell!.id];
     });
 
+    const cumulativeCode = useCummulativeCode(props!.cell!.id);
+
     useEffect(() => {
         if (!bundle) {
-            createBundle(props.cell!.id, cumulativeCode.join('\n'));
+            createBundle(props.cell!.id, cumulativeCode);
             return;
         }
         let timer: any;
         timer = setTimeout(async () => {
-            createBundle(props.cell!.id, cumulativeCode.join('\n'));
+            createBundle(props.cell!.id, cumulativeCode);
         }, 1000);
 
         return () => {
@@ -77,7 +37,7 @@ const CodeCell: React.FC<CodeCellProps> = (props) => {
             }
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [cumulativeCode.join('\n'), props.cell!.id, createBundle]);
+    }, [cumulativeCode, props.cell!.id, createBundle]);
 
     return (
         <Resizable direction="vertical">
