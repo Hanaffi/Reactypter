@@ -12,6 +12,7 @@ interface CodeCellProps {
 }
 const CodeCell: React.FC<CodeCellProps> = (props) => {
     const { updateCell } = useActions();
+    const [input, setInput] = useState('console.log("Hello World");');
     const [code, setCode] = useState('');
     const [err, setErr] = useState('');
     useEffect(() => {
