@@ -8,8 +8,6 @@ import {
     UpdateCellAction,
     DeleteCellAction,
     MoveCellAction,
-    BundleStartAction,
-    BundleCompleteAction,
     Direction
 } from '../actions';
 
