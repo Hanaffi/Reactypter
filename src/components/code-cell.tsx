@@ -15,14 +15,26 @@ const CodeCell: React.FC<CodeCellProps> = (props) => {
         const orderedCells = state!.cells!.order.map(
             (ID) => state!.cells!.data[ID]
         );
-        const cumulative_Code: string[] = [];
+        const cumulative_code: string[] = [
+            `
+            const show = (value)=>{
+                if(typeof value === 'object'){
+                    document.querySelector("#root").innerHTML = JSON.stringify(value);
+                }
+                else{
+                    document.querySelector("#root").innerHTML = value;
+                }
+                
+            }
+        `
+        ];
         for (let c of orderedCells) {
             if (c.type === 'code') {
-                cumulative_Code.push(c.content);
+                cumulative_code.push(c.content);
             }
             if (c.id === props!.cell!.id) break;
         }
-        return cumulative_Code;
+        return cumulative_code;
     });
 
     // console.log(cumulativeCode);
