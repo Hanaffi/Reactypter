@@ -47,7 +47,7 @@ const Resizable: React.FC<ResizableProps> = (props) => {
         };
     } else {
         resizableProps = {
-            maxConstraints: [Infinity, innerHeight * 0.8],
+            maxConstraints: [Infinity, innerHeight * 0.9],
             minConstraints: [Infinity, innerHeight * 0.1],
             resizeHandles: ['s'],
             height: 500,
