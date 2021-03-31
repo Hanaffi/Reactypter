@@ -1,4 +1,3 @@
-import { stat } from 'fs';
 import produce from 'immer';
 import { ActionType } from '../action-types/index';
 import { Action } from '../actions';
