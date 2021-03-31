@@ -10,11 +10,13 @@ const CellList: React.FC = () => {
     useEffect(() => {
         fetchCells();
     }, []);
+
     const cells = useTypedSelector((state) => {
         return state.cells?.order.map((id) => {
             return state.cells?.data[id];
         });
     });
+
     const renderedCells = cells?.map((x) => (
         <Fragment key={x!.id}>
             <CellListItem cell={x} />
