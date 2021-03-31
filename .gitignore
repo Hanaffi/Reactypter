@@ -1,0 +1,33 @@
+First and foremost thing is to add .gitignore file in my-app. Like so in image below.
+
+Put .gitignore in the parent folder/directory of node_modules.
+
+and next add this in your .gitignore file
+
+/node_modules
+Note
+You can also add others files too to ignore them to be pushed on github. Here are some more files kept in .gitignore. You can add them according to your requirement. # is just a way to comment in .gitignore file.
+
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+**/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+Share
