@@ -3,13 +3,21 @@
     "version": "1.0.0",
     "description": "",
     "main": "dist/index.js",
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "tsc --watch --preserveWatchOutput"
+        "start": "tsc --watch --preserveWatchOutput",
+        "prepublishOnly": "tsc"
     },
+    "bin": "dist/index.js",
     "keywords": [],
     "author": "",
     "license": "ISC",
+    "files": [
+        "dist"
+    ],
     "dependencies": {
         "commander": "^7.2.0",
         "@reactypter/local-api": "^1.0.0"
