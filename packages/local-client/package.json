@@ -1,5 +1,5 @@
 {
-    "name": "local-client",
+    "name": "@reactypter/local-client",
     "version": "0.1.0",
     "private": true,
     "dependencies": {

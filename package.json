@@ -1,5 +1,5 @@
 {
-    "name": "reactypter",
+    "name": "reactypter-head",
     "private": true,
     "scripts": {
         "start": "lerna run start --parallel"
