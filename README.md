@@ -18,11 +18,12 @@
     <!-- <a href=""><strong>Explore the docs »</strong></a> -->
     <br />
     <br />
-    <a href="https://github.com/hanaffi/reactypter">View Demo</a>
+    <a href="https://www.npmjs.com/package/reactypter">npm package</a>
     ·
     <a href="https://github.com/hanaffi/reactypter/issues">Report Bug</a>
     ·
     <a href="https://github.com/hanaffi/reactypter/issues">Request Feature</a>
+
   </p>
 </p>
 
@@ -72,21 +73,28 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
--   Install Node.js and npm
-
 To build the site for development:
 
 ### Installation
 
--   Run `npm install` in the root folder
-
 ## Usage
 
--   Run `npm start` - it should now parallel start different packages
--   Now go to `packages/cli/dist` and run `node index.js serve` to launch the editor
--   It will start on port 4005 by default. you can change it to any other port like so: `node index.js serve -p 1234`
+1. Open terminal
+2. Run `npm i -g reactypter` to install the package
+3. After installing, Run `npx reactypter serve` to start the notebook
+4. Go to localhost:4005 (By default, It starts at port 4005)
+5. you can change the port to 1000 for example by doing so `npx reactypter serve -p 1000` or `npx reactypter serve --port 1000` or `npx reactypter serve --port=1000`
+6. After finishing writing your notebook, you will find `notebook.js` file in the directory you started at
 
-<!-- ROADMAP -->
+-   You can change the saved-file name simply by stating the desired name in npx command. For example if you want it to be `proj.js` you will run `npx reactypter serve proj.js`
+-   You can import any npm library inside your cells
+-   As an alternative to `console.log` , You can show the value of any variable in the preview screen by using `show` function. For exmaple if you have `const x=5;` and you want to show it, you'd write `show(x)`
+
+## Screenshots
+
+<a href="https://user-images.githubusercontent.com/35642947/113461433-d8aacf00-941c-11eb-9780-6776b12fd0b2.png" ><img src="https://user-images.githubusercontent.com/35642947/113461433-d8aacf00-941c-11eb-9780-6776b12fd0b2.png" width="400px" height="200px"/> </a>
+
+<a href="https://user-images.githubusercontent.com/35642947/113461486-11e33f00-941d-11eb-8d6b-79d95998b9b5.png" ><img src="https://user-images.githubusercontent.com/35642947/113461486-11e33f00-941d-11eb-8d6b-79d95998b9b5.png" width="400px" height="200px"/> </a>
 
 ## Roadmap
 
@@ -98,11 +106,16 @@ See the [open issues](https://github.com/hanaffi/reactypter/issues) for a list o
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1.  Install Node.js and npm
+2.  Fork & Clone the Project
+3.  Run `npm install` in the root folder
+4.  Run `npm start` - it should now parallel start different packages
+5.  Now go to `packages/cli/dist` and run `node index.js serve` to launch the editor
+6.  It will start on port 4005 by default
+7.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+8.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+9.  Push to the Branch (`git push origin feature/AmazingFeature`)
+10. Open a Pull Request
 
 <!-- LICENSE -->
 
