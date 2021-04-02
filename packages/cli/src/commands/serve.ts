@@ -2,7 +2,7 @@ import path from 'path';
 import { Command } from 'commander';
 import { serve } from '@reactypter/local-api';
 
-const isProduction = process.env.NODE_ENV === ' production';
+const isProduction = process.env.NODE_ENV === 'production';
 export const serveCommand = new Command()
     .command('serve [filename] ')
     .description('Open a file for editing')
