@@ -92,7 +92,7 @@ To build the site for development:
 
 ## Screenshots
 
-<a href="https://user-images.githubusercontent.com/35642947/113461433-d8aacf00-941c-11eb-9780-6776b12fd0b2.png" ><img src="https://user-images.githubusercontent.com/35642947/113461433-d8aacf00-941c-11eb-9780-6776b12fd0b2.png" width="400px" height="200px"/> </a>
+<a href="https://user-images.githubusercontent.com/35642947/113489086-570d7c80-94c2-11eb-8c81-cd6256925b73.png" ><img src="https://user-images.githubusercontent.com/35642947/113489086-570d7c80-94c2-11eb-8c81-cd6256925b73.png" width="400px" height="200px"/> </a>
 
 <a href="https://user-images.githubusercontent.com/35642947/113461486-11e33f00-941d-11eb-8d6b-79d95998b9b5.png" ><img src="https://user-images.githubusercontent.com/35642947/113461486-11e33f00-941d-11eb-8d6b-79d95998b9b5.png" width="400px" height="200px"/> </a>
 
