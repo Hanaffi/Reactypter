@@ -127,7 +127,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Ahmed Essam - aehanaffi@gmail.com
 
 Project Link: [https://github.com/hanaffi/reactypter](https://github.com/hanaffi/reactypter)
 
